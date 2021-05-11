@@ -1,6 +1,7 @@
 <?php
 if(isset($_POST["add-submit"])){
     
+    // PDO request
     $servername = "localhost";
     $dBUsername = "root";
     $dBPassword = "";
@@ -15,7 +16,7 @@ if(isset($_POST["add-submit"])){
     $princ = $_POST["princ"];
     $sec = $_POST["sec"];
 
-
+        // Fields Checking
     if(empty($nom) || !preg_match("/^[a-zA-Z0-9]*$/", $nom)){
         header("Location: ../Index.php?error=invalidnom");
         exit();
@@ -26,25 +27,27 @@ if(isset($_POST["add-submit"])){
         header("Location: ../Index.php?error=invalidqualit");
         exit();
     }else{
-        $sql = "SELECT * FROM argonautes;";
+        // Limit Checking
+        $sql = "SELECT * FROM argonautes;";  
         $res = $conn->query($sql);
         $resultCheck = $res->rowCount();
         if($resultCheck === 50){
             header("Location: ../Index.php?error=fullargo");
             exit();
         }else{
+            // Duplicate checking
             $sql = "SELECT nom FROM argonautes WHERE nom='".$nom."';";
             $res = $conn->query($sql);
             if(!$res){
-                header("Location: ../Index.php?error=sqlerrora");
+                header("Location: ../Index.php?error=sqlerror");
                 exit(); 
             }else{
                 $resultCheck = $res->rowCount();
-
                 if($resultCheck > 0){
                     header("Location: ../Index.php?error=usernametaken");
                     exit();
                 }else{
+                    // Adding
                     $sql = "INSERT INTO argonautes(nom,qualite_princ,qualite_sec) VALUES ('".$nom."','".$princ."','".$sec."');";
                     $res = $conn->query($sql);
 

@@ -49,14 +49,15 @@
   
   <section class="member-list">
   <?php
-            
+    
+    // PDO request
     $servername = "localhost";
     $dBUsername = "root";
     $dBPassword = "";
     $dBName = "wild";
     $searchSend = new PDO("mysql: host={$servername}; dbname={$dBName}",$dBUsername, $dBPassword);
 
-
+                      // List Generation
             $searchResp = $searchSend->query("SELECT DISTINCT * FROM argonautes ORDER BY nom");
             while($donnees = $searchResp->fetch()) {
             
