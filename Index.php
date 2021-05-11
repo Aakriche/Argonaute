@@ -11,7 +11,7 @@
 <header>
   <h1>
     <img src="https://www.wildcodeschool.com/assets/logo_main-e4f3f744c8e717f1b7df3858dce55a86c63d4766d5d9a7f454250145f097c2fe.png" alt="Wild Code School logo" />
-    Les Argonautes
+    Les Argonautes <img class="argo" src="./img/argo.png" alt="Argonaute"/>
   </h1>
 </header>
 
@@ -19,7 +19,7 @@
 <main>
   
   <!-- New member form -->
-  <h2>Ajouter un(e) Argonaute  <img src="./img/argo.png" alt="argonaute" /></h2>
+  <h2>Ajouter un(e) Argonaute</h2>
   <form class="new-member-form" action="ext/AddMembre.ext.php" method="POST">
     <label for="name">Nom de l&apos;Argonaute *</label>
     <input id="name" name="name" type="text" placeholder="Charalampos" />
